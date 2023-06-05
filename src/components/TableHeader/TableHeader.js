@@ -1,4 +1,5 @@
 const TableHeader = ({ dates }) => {
+
     return (
         <thead className="table__head">
             <tr className="table__row">

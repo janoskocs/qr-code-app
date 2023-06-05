@@ -8,7 +8,10 @@ export const generateDates = () => {
     for (let i = 0; i < 9; i++) {
         const date = new Date(today);
         date.setDate(today.getDate() - 2 + i);
-        const formattedDate = date.toLocaleDateString("en-GB"); // Format date as "05/06/2023"
+        const day = String(date.getDate()).padStart(2, '0');
+        const month = String(date.getMonth() + 1).padStart(2, '0');
+        const year = String(date.getFullYear()).slice(-2);
+        const formattedDate = `${day}/${month}/${year}`;
         const dayOfWeek = daysOfWeek[date.getDay()];
         dates.push({ date: formattedDate, day: dayOfWeek });
     }
