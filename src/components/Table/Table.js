@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 import { generateDates, generateHours, generateCells } from "../../utils/tableUtils";
 import { generatePalletString } from "../../utils/generatePalletString";
@@ -6,9 +6,8 @@ import TableHeader from "../TableHeader/TableHeader";
 import TableRow from "../TableRow/TableRow";
 
 import Modal from 'react-modal';
-
-
-import { QRCodeSVG } from 'qrcode.react';
+import jsPDF from 'jspdf';
+import { toDataURL } from 'qrcode';
 import "./Table.scss";
 
 const Table = () => {
@@ -77,10 +76,48 @@ const Table = () => {
 
     const [palletStringArr, setPalletStringArr] = useState([])
     const print = () => {
-        setPalletStringArr(generatePalletString(service, selectedDate, selectedHour, selectedValue))
-        return
-    }
+        const updatedPalletStringArr = generatePalletString(service, selectedDate, selectedHour, selectedValue);
+        setPalletStringArr(updatedPalletStringArr);
+    };
+    useEffect(() => {
+        if (palletStringArr.length > 0) {
+            generatePDF(palletStringArr)
+        }
 
+    }, [palletStringArr]);
+    const generatePDF = async (strings) => {
+        const doc = new jsPDF('landscape');
+        const fontSize = 30; // Adjust the font size as per your requirements
+        const topMargin = 15; // Adjust the top margin as per your requirements
+        const qrCodeSize = 150; // Adjust the QR code size as per your requirements
+        const qrCodeMargin = 0; // Adjust the margin between the text and QR code as per your requirements
+
+        for (let i = 0; i < strings.length; i++) {
+            if (i > 0) {
+                doc.addPage('landscape');
+            }
+
+            // Add text
+            doc.setFontSize(fontSize);
+            doc.text(strings[i], doc.internal.pageSize.getWidth() / 2, topMargin, {
+                align: 'center',
+                baseline: 'top',
+            });
+
+            // Add QR code
+            const qrCodeDataURL = await toDataURL(strings[i], { width: qrCodeSize, height: qrCodeSize });
+            doc.addImage(qrCodeDataURL, 'JPEG', doc.internal.pageSize.getWidth() / 2 - qrCodeSize / 2, topMargin + fontSize + qrCodeMargin, qrCodeSize, qrCodeSize);
+        }
+
+        doc.save('output.pdf');
+    };
+
+
+    // // Add QR code
+    // const qrCodeCanvas = document.createElement('canvas');
+    // QRCode.toCanvas(qrCodeCanvas, string, { width: 200, height: 200 });
+    // const qrCodeDataURL = qrCodeCanvas.toDataURL();
+    // doc.addImage(qrCodeDataURL, 'JPEG', 100, 150, 200, 200);
     return (
         <>
             <table className="table">
@@ -166,13 +203,6 @@ const Table = () => {
                         <button onClick={closeModal}>Cancel</button>
                         <button className="pagecount__print-btn" onClick={print}>Print</button>
                     </div>
-
-                    {palletStringArr && palletStringArr.map((qr) => {
-                        return (<>
-                            <p>{qr}</p>
-                            <QRCodeSVG value={qr} />
-                        </>)
-                    })}
                 </article>
             </Modal>
 
