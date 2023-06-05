@@ -7,6 +7,8 @@ import TableRow from "../TableRow/TableRow";
 
 import Modal from 'react-modal';
 
+
+import { QRCodeSVG } from 'qrcode.react';
 import "./Table.scss";
 
 const Table = () => {
@@ -73,9 +75,10 @@ const Table = () => {
         openModal()
     };
 
+    const [palletStringArr, setPalletStringArr] = useState([])
     const print = () => {
-        console.log(generatePalletString(service, selectedDate, selectedHour, selectedValue)
-        )
+        setPalletStringArr(generatePalletString(service, selectedDate, selectedHour, selectedValue))
+        return
     }
 
     return (
@@ -164,8 +167,15 @@ const Table = () => {
                         <button className="pagecount__print-btn" onClick={print}>Print</button>
                     </div>
 
+                    {palletStringArr && palletStringArr.map((qr) => {
+                        return (<>
+                            <p>{qr}</p>
+                            <QRCodeSVG value={qr} />
+                        </>)
+                    })}
                 </article>
             </Modal>
+
         </>
     );
 };

@@ -1,7 +1,7 @@
 export const generatePalletString = (service, date, hour, pageCount = '00') => {
     let stringArr = []
 
-    if (pageCount === 0) {
+    if (pageCount == 0) {
         stringArr.push(`PAL${service.charAt(0)}${date}${hour}${pageCount}`)
     }
 
