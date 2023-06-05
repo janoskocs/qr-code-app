@@ -1,3 +1,13 @@
 export const generatePalletString = (service, date, hour, pageCount = '00') => {
-    return `PAL${service}${date}${hour}${pageCount}`;
+    let stringArr = []
+
+    if (pageCount === 0) {
+        stringArr.push(`PAL${service}${date}${hour}${pageCount}`)
+    }
+
+    for (let i = 0; i < pageCount; i++) {
+        const palletNum = i < 10 ? `0${i}` : `${i}`; // Add leading zero for values less than 10
+        stringArr.push(`PAL${service}${date}${hour}${palletNum}`)
+    }
+    return stringArr
 };
