@@ -1,6 +1,7 @@
 import { useState } from "react";
 
 import { generateDates, generateHours, generateCells } from "../../utils/tableUtils";
+import { generatePalletString } from "../../utils/generatePalletString";
 import TableHeader from "../TableHeader/TableHeader";
 import TableRow from "../TableRow/TableRow";
 
@@ -18,7 +19,7 @@ const Table = () => {
         const selectedHour = hours[hour].replace(':', '');
 
         const serviceFirstChar = service.charAt(0);
-        setSelectedDateTime(`PAL${serviceFirstChar}${selectedDate}${selectedHour}`);
+        setSelectedDateTime(generatePalletString(serviceFirstChar, selectedDate, selectedHour));
     };
 
 
