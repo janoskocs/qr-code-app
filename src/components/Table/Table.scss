@@ -1,0 +1,12 @@
+@use "../../assets/styles/partials/resets";
+@use "../../assets/styles/partials/variables" as *;
+
+.table {
+  margin: 0 auto;
+}
+
+table,
+th,
+td {
+  border: 1px solid;
+}
