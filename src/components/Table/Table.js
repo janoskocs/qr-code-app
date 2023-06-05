@@ -58,11 +58,16 @@ const Table = () => {
 
     const handleButtonClick = (date, hour, service) => {
         const selectedDate = new Date(date.date);
-        const selectedHour = hours[hour];
-        const formattedDate = selectedDate.toLocaleDateString('en-GB', { day: '2-digit', month: '2-digit', year: '2-digit' });
-        let serviceFirstChar = service.charAt(0)
-        setSelectedDateTime(`PAL${serviceFirstChar} ${formattedDate}, ${selectedHour}`);
+        const selectedHour = hours[hour].replace(':', ''); // Remove colon from the selected hour
+        const formattedDate = selectedDate.toLocaleDateString('en-GB', {
+            day: '2-digit',
+            month: '2-digit',
+            year: '2-digit',
+        }).replace(/\//g, ''); // Remove slashes from the default formatted date
+        const serviceFirstChar = service.charAt(0);
+        setSelectedDateTime(`PAL${serviceFirstChar}${formattedDate}${selectedHour}`);
     };
+
 
     return (
         <>
