@@ -112,12 +112,6 @@ const Table = () => {
         doc.save('output.pdf');
     };
 
-
-    // // Add QR code
-    // const qrCodeCanvas = document.createElement('canvas');
-    // QRCode.toCanvas(qrCodeCanvas, string, { width: 200, height: 200 });
-    // const qrCodeDataURL = qrCodeCanvas.toDataURL();
-    // doc.addImage(qrCodeDataURL, 'JPEG', 100, 150, 200, 200);
     return (
         <>
             <table className="table">
@@ -135,9 +129,6 @@ const Table = () => {
                     ))}
                 </tbody>
             </table>
-            <div className="test">
-                <p>Selected Date and Time: {selectedDateTime}</p>
-            </div>
 
             <Modal
                 isOpen={modalIsOpen}

@@ -1,3 +1,5 @@
+import "./TableRow.scss"
+
 const TableRow = ({ hour, dates, hourIndex, cells, handleButtonClick }) => {
     return (
         <tr>
@@ -10,7 +12,7 @@ const TableRow = ({ hour, dates, hourIndex, cells, handleButtonClick }) => {
                         {service === "NO_SERVICE" ? (
                             ""
                         ) : (
-                            <button onClick={() => handleButtonClick(date, hourIndex, service)}>
+                            <button className="print__btn" onClick={() => handleButtonClick(date, hourIndex, service)}>
                                 {service}
                             </button>
                         )}
