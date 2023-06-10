@@ -1,0 +1,29 @@
+@use "../../assets/styles/partials/resets";
+@use "../../assets/styles/partials/variables" as *;
+.nav {
+  background-color: $brand-primary;
+  padding: 1rem;
+
+  &__wrapper {
+    width: 70%;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &__title,
+  &__createdBy {
+    color: $light;
+    font-family: $font-stack;
+  }
+
+  &__createdBy a {
+    color: $light;
+    text-decoration: none;
+
+    &:hover {
+      color: rgb(9, 0, 128);
+    }
+  }
+}
