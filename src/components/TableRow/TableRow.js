@@ -12,7 +12,7 @@ const TableRow = ({ hour, dates, hourIndex, cells, handleButtonClick }) => {
                         {service === "NO_SERVICE" ? (
                             ""
                         ) : (
-                            <button className="print__btn" onClick={() => handleButtonClick(date, hourIndex, service)}>
+                            <button className={`print__btn ${service}`} onClick={() => handleButtonClick(date, hourIndex, service)}>
                                 {service}
                             </button>
                         )}
