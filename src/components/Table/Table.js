@@ -42,9 +42,6 @@ const Table = () => {
 
     const [selectedValue, setSelectedValue] = useState("10");
 
-    const handleRadioChange = (event) => {
-        setSelectedValue(event.target.value);
-    };
 
     const handleInputChange = (event) => {
         setSelectedValue(event.target.value);
@@ -57,8 +54,6 @@ const Table = () => {
     const hours = generateHours();
     const cells = generateCells(dates, hours);
 
-    const [selectedDateTime, setSelectedDateTime] = useState('');
-
     const [selectedDate, setSelectedDate] = useState("")
     const [selectedHour, setSelectedHour] = useState("")
     const [service, setService] = useState("")
@@ -68,9 +63,6 @@ const Table = () => {
         setSelectedHour(hours[hour].replace(':', ''));
         setService(service);
         setSelectedValue(Number(selectedValue))
-        // const selectedHour = hours[hour].replace(':', '');)
-        // const selectedDate = date.date.split("/").join("");
-        // const serviceFirstChar = service.charAt(0);
         openModal()
     };
 
@@ -82,6 +74,7 @@ const Table = () => {
     useEffect(() => {
         if (palletStringArr.length > 0) {
             generatePDF(palletStringArr)
+            window.location.reload(false);
         }
 
     }, [palletStringArr]);
@@ -141,33 +134,16 @@ const Table = () => {
 
                 <article className="pagecount">
                     <div className="pagecount__choice">
-                        <label>
-                            <input
-                                type="radio"
-                                value="00"
-                                checked={selectedValue === "00"}
-                                onChange={handleRadioChange}
-                            />
-                            1
+                        <label htmlFor="palletcount__input">
+                            Quantity of pallets
                         </label>
-                        <label>
-                            <input
-                                type="radio"
-                                value="10"
-                                checked={selectedValue === 10}
-                                onChange={handleRadioChange}
-                            />
-                            10
-                        </label>
-                        <label>
-                            <input
-                                type="text"
-                                value={selectedValue}
-                                onChange={handleInputChange}
-                                onClick={() => setSelectedValue("")}
-                            />
-                            Custom
-                        </label>
+                        <input
+                            type="text"
+                            value={selectedValue}
+                            onChange={handleInputChange}
+                            onClick={() => setSelectedValue("")}
+                            className="palletcount__input"
+                        />
                     </div>
 
                     {service === "DHLUPS" ? <>
