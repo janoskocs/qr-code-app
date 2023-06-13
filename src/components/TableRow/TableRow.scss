@@ -1,6 +1,38 @@
 .print__btn {
   width: 60px;
+  display: block;
+  margin: 0 auto;
+  border: none;
+  padding: 5px;
+  border-radius: 5px;
+  &.DHL {
+    background-color: yellow;
+    &:hover {
+      background-color: lightyellow;
+    }
+  }
 
+  &.UPS {
+    background-color: goldenrod;
+    &:hover {
+      background-color: lightgoldenrodyellow;
+    }
+  }
+
+  &.BLK {
+    background-color: navy;
+    color: #fff;
+    &:hover {
+      background-color: lightskyblue;
+    }
+  }
+  &.DHLUPS {
+    background-color: purple;
+    color: #fff;
+    &:hover {
+      background-color: lightpink;
+    }
+  }
   &:hover {
     cursor: pointer;
   }
