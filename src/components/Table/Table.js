@@ -26,6 +26,7 @@ const Table = () => {
 
     let subtitle;
     const [modalIsOpen, setIsOpen] = useState(false);
+    const [isCustomOpen, setIsCustomOpen] = useState(false)
 
     function openModal() {
         setIsOpen(true);
@@ -41,13 +42,9 @@ const Table = () => {
     }
 
     const [selectedValue, setSelectedValue] = useState("10");
-
-
     const handleInputChange = (event) => {
         setSelectedValue(event.target.value);
     };
-    //Generate QR Codes
-
 
     //Dates
     const dates = generateDates();
@@ -58,6 +55,10 @@ const Table = () => {
     const [selectedHour, setSelectedHour] = useState("")
     const [service, setService] = useState("")
 
+    const setDate = (date) => {
+        let newDateString = date.split("-").join("")
+        setSelectedDate(`${newDateString.slice(6, 8)}${newDateString.slice(4, 6)}${newDateString.slice(2, 4)}`)
+    }
     const handleButtonClick = (date, hour, service) => {
         setSelectedDate(date.date.split("/").join(""))
         setSelectedHour(hours[hour].replace(':', ''));
@@ -68,6 +69,7 @@ const Table = () => {
 
     const [palletStringArr, setPalletStringArr] = useState([])
     const print = () => {
+
         const updatedPalletStringArr = generatePalletString(service, selectedDate, selectedHour, selectedValue);
         setPalletStringArr(updatedPalletStringArr);
     };
@@ -123,12 +125,15 @@ const Table = () => {
                 </tbody>
             </table>
 
+            <section className="custom">
+                <h4 className="custom__title">Custom QR Code</h4>
+                <button onClick={() => setIsCustomOpen(true)}>Custom</button>
+            </section>
             <Modal
                 isOpen={modalIsOpen}
                 onAfterOpen={afterOpenModal}
                 onRequestClose={closeModal}
                 style={customStyles}
-                contentLabel="Example Modal"
             >
                 <h2 ref={(_subtitle) => (subtitle = _subtitle)}>How many QR codes would you like to print?</h2>
 
@@ -173,6 +178,57 @@ const Table = () => {
                 </article>
             </Modal>
 
+            {/*  Custom modal */}
+
+            <Modal
+                isOpen={isCustomOpen}
+                onAfterOpen={afterOpenModal}
+                style={customStyles}
+            >
+                <h2 ref={(_subtitle) => (subtitle = _subtitle)}>Custom pallet</h2>
+                <article>
+                    <div className="palletinfo">
+                        <p>Service</p>
+                        <div className="palletinfo__service">
+                            <label>
+                                <input
+                                    type="radio"
+                                    value="DHL"
+                                    checked={service === "DHL"}
+                                    onChange={(e) => setService("DHL")}
+                                />
+                                DHL
+                            </label>
+                            <label>
+                                <input
+                                    type="radio"
+                                    value="UPS"
+                                    checked={service === "UPS"}
+                                    onChange={(e) => setService("UPS")}
+                                />
+                                UPS
+                            </label>
+                            <label>
+                                <input
+                                    type="radio"
+                                    value="BLK"
+                                    checked={service === "BLK"}
+                                    onChange={(e) => setService("BLK")}
+                                />
+                                BLK
+                            </label>
+                        </div>
+                        <div className="palletinfo__date">
+                            <input type="date" onChange={(e) => { setDate(e.target.value) }} />
+                            <input type="time" onChange={(e) => { setSelectedHour(e.target.value.replace(":", "")) }} />
+                        </div>
+                    </div>
+                    <div className="action">
+                        <button onClick={(e) => setIsCustomOpen(false)}>Cancel</button>
+                        <button className="pagecount__print-btn" onClick={print}>Print</button>
+                    </div>
+                </article>
+            </Modal>
         </>
     );
 };
