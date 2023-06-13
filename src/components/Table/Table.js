@@ -80,12 +80,13 @@ const Table = () => {
         }
 
     }, [palletStringArr]);
+
     const generatePDF = async (strings) => {
         const doc = new jsPDF('landscape');
-        const fontSize = 30; // Adjust the font size as per your requirements
-        const topMargin = 15; // Adjust the top margin as per your requirements
-        const qrCodeSize = 150; // Adjust the QR code size as per your requirements
-        const qrCodeMargin = 0; // Adjust the margin between the text and QR code as per your requirements
+        const fontSize = 40; // Adjust the font size as per your requirements
+        const topMargin = 10; // Adjust the top margin as per your requirements
+        const qrCodeSize = 130; // Adjust the QR code size as per your requirements
+        const qrCodeMargin = 10; // Adjust the margin between the text and QR code as per your requirements
 
         for (let i = 0; i < strings.length; i++) {
             if (i > 0) {
@@ -97,6 +98,34 @@ const Table = () => {
             doc.text(strings[i], doc.internal.pageSize.getWidth() / 2, topMargin, {
                 align: 'center',
                 baseline: 'top',
+            });
+
+            let service = strings[i].slice(3, 4)
+
+            if (service === "D") {
+                doc.text("DHL", doc.internal.pageSize.getWidth() / 2, 40, {
+                    align: 'center',
+                    baseline: 'center',
+                });
+            }
+            if (service === "U") {
+                doc.text("UPS", doc.internal.pageSize.getWidth() / 2, 40, {
+                    align: 'center',
+                    baseline: 'center',
+                });
+            }
+
+            if (service === "B") {
+                doc.text("BLK", doc.internal.pageSize.getWidth() / 2, 40, {
+                    align: 'center',
+                    baseline: 'center',
+                });
+            }
+
+            let hour = strings[i].slice(10, 12) + ":" + strings[i].slice(12, 14)
+            doc.text(hour, doc.internal.pageSize.getWidth() / 2, 55, {
+                align: 'center',
+                baseline: 'center',
             });
 
             // Add QR code
