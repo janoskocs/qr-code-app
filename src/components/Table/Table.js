@@ -155,8 +155,7 @@ const Table = () => {
             </table>
 
             <section className="custom">
-                <h4 className="custom__title">Custom QR Code</h4>
-                <button onClick={() => setIsCustomOpen(true)}>Custom</button>
+                <button className="custom__btn" onClick={() => setIsCustomOpen(true)}>Create custom QR code</button>
             </section>
             <Modal
                 isOpen={modalIsOpen}
@@ -164,47 +163,53 @@ const Table = () => {
                 onRequestClose={closeModal}
                 style={customStyles}
             >
-                <h2 ref={(_subtitle) => (subtitle = _subtitle)}>How many QR codes would you like to print?</h2>
+                <div className="modal">
+                    <h2 className="modal__title" ref={(_subtitle) => (subtitle = _subtitle)}></h2>
+                    <h2 className="modal__title">Quantity of pallets</h2>
 
-                <article className="pagecount">
-                    <div className="pagecount__choice">
-                        <label htmlFor="palletcount__input">
-                            Quantity of pallets
-                        </label>
-                        <input
-                            type="text"
-                            value={selectedValue}
-                            onChange={handleInputChange}
-                            onClick={() => setSelectedValue("")}
-                            className="palletcount__input"
-                        />
-                    </div>
+                    <article className="pagecount">
+                        <div className="pagecount__choice">
+                            <label htmlFor="palletcount__input" className="modal__label">
+                                Enter quantity:
+                            </label>
+                            <input
+                                type="text"
+                                value={selectedValue}
+                                onChange={handleInputChange}
+                                onClick={() => setSelectedValue("")}
+                                className="palletcount__input"
+                            />
+                        </div>
 
-                    {service === "DHLUPS" ? <>
-                        Select DHL or UPS
-                        <label>
-                            <input
-                                type="radio"
-                                value="DHL"
-                                checked={service === "DHL"}
-                                onChange={(e) => setService("DHL")}
-                            />
-                            DHL
-                        </label>
-                        <label>
-                            <input
-                                type="radio"
-                                value="UPS"
-                                checked={service === "UPS"}
-                                onChange={(e) => setService("UPS")}
-                            />
-                            UPS
-                        </label></> : ""}
-                    <div className="action">
-                        <button onClick={closeModal}>Cancel</button>
-                        <button className="pagecount__print-btn" onClick={print}>Print</button>
-                    </div>
-                </article>
+                        {service === "DHLUPS" ? <>
+                            <p className="modal__text">Select DHL or UPS</p>
+                            <label className="modal__label">
+                                <input
+                                    className="modal__radio"
+                                    type="radio"
+                                    value="DHL"
+                                    checked={service === "DHL"}
+                                    onChange={(e) => setService("DHL")}
+                                />
+                                DHL
+                            </label>
+                            <label className="modal__label">
+                                <input
+                                    className="modal__radio"
+                                    type="radio"
+                                    value="UPS"
+                                    checked={service === "UPS"}
+                                    onChange={(e) => setService("UPS")}
+                                />
+                                UPS
+                            </label></> : ""}
+                        <div className="action">
+                            <button className="action__cancel" onClick={closeModal}>Cancel</button>
+                            <button className="action__print" onClick={print}>Print</button>
+                        </div>
+                    </article>
+                </div>
+
             </Modal>
 
             {/*  Custom modal */}
@@ -214,13 +219,14 @@ const Table = () => {
                 onAfterOpen={afterOpenModal}
                 style={customStyles}
             >
-                <h2 ref={(_subtitle) => (subtitle = _subtitle)}>Custom pallet</h2>
+                <h2 className="modal__title" ref={(_subtitle) => (subtitle = _subtitle)}>Custom pallet</h2>
                 <article>
                     <div className="palletinfo">
-                        <p>Service</p>
+                        <p className="modal__text">Service</p>
                         <div className="palletinfo__service">
-                            <label>
+                            <label className="modal__label">
                                 <input
+                                    className="modal__radio"
                                     type="radio"
                                     value="DHL"
                                     checked={service === "DHL"}
@@ -228,8 +234,9 @@ const Table = () => {
                                 />
                                 DHL
                             </label>
-                            <label>
+                            <label className="modal__label">
                                 <input
+                                    className="modal__radio"
                                     type="radio"
                                     value="UPS"
                                     checked={service === "UPS"}
@@ -237,8 +244,9 @@ const Table = () => {
                                 />
                                 UPS
                             </label>
-                            <label>
+                            <label className="modal__label">
                                 <input
+                                    className="modal__radio"
                                     type="radio"
                                     value="BLK"
                                     checked={service === "BLK"}
@@ -247,14 +255,26 @@ const Table = () => {
                                 BLK
                             </label>
                         </div>
-                        <div className="palletinfo__date">
-                            <input type="date" onChange={(e) => { setDate(e.target.value) }} />
-                            <input type="time" onChange={(e) => { setSelectedHour(e.target.value.replace(":", "")) }} />
+                        <div className="palletinfo">
+                            <input className="palletinfo__input" type="date" onChange={(e) => { setDate(e.target.value) }} />
+                            <input className="palletinfo__input" type="time" onChange={(e) => { setSelectedHour(e.target.value.replace(":", "")) }} />
                         </div>
                     </div>
+                    <div className="pagecount__choice">
+                        <label htmlFor="palletcount__input" className="modal__label">
+                            Enter quantity:
+                        </label>
+                        <input
+                            type="text"
+                            value={selectedValue}
+                            onChange={handleInputChange}
+                            onClick={() => setSelectedValue("")}
+                            className="palletcount__input"
+                        />
+                    </div>
                     <div className="action">
-                        <button onClick={(e) => setIsCustomOpen(false)}>Cancel</button>
-                        <button className="pagecount__print-btn" onClick={print}>Print</button>
+                        <button className="action__cancel" onClick={(e) => setIsCustomOpen(false)}>Cancel</button>
+                        <button className="action__print" onClick={print}>Print</button>
                     </div>
                 </article>
             </Modal>
