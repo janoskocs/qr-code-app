@@ -1,19 +1,19 @@
 {
   "files": {
-    "main.css": "/qr-code-app/static/css/main.02431486.css",
-    "main.js": "/qr-code-app/static/js/main.5173583c.js",
+    "main.css": "/qr-code-app/static/css/main.c2c0fb48.css",
+    "main.js": "/qr-code-app/static/js/main.b8419cfb.js",
     "static/js/498.380c0905.chunk.js": "/qr-code-app/static/js/498.380c0905.chunk.js",
     "static/js/703.6d064e92.chunk.js": "/qr-code-app/static/js/703.6d064e92.chunk.js",
     "static/js/148.397d73c4.chunk.js": "/qr-code-app/static/js/148.397d73c4.chunk.js",
     "index.html": "/qr-code-app/index.html",
-    "main.02431486.css.map": "/qr-code-app/static/css/main.02431486.css.map",
-    "main.5173583c.js.map": "/qr-code-app/static/js/main.5173583c.js.map",
+    "main.c2c0fb48.css.map": "/qr-code-app/static/css/main.c2c0fb48.css.map",
+    "main.b8419cfb.js.map": "/qr-code-app/static/js/main.b8419cfb.js.map",
     "498.380c0905.chunk.js.map": "/qr-code-app/static/js/498.380c0905.chunk.js.map",
     "703.6d064e92.chunk.js.map": "/qr-code-app/static/js/703.6d064e92.chunk.js.map",
     "148.397d73c4.chunk.js.map": "/qr-code-app/static/js/148.397d73c4.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.02431486.css",
-    "static/js/main.5173583c.js"
+    "static/css/main.c2c0fb48.css",
+    "static/js/main.b8419cfb.js"
   ]
 }
