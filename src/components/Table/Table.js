@@ -95,42 +95,45 @@ const Table = () => {
 
             // Add text
             doc.setFontSize(fontSize);
-            doc.text(strings[i], doc.internal.pageSize.getWidth() / 2, topMargin, {
+            doc.text(strings[i], doc.internal.pageSize.getWidth() / 2, doc.internal.pageSize.getHeight() - 20, {
                 align: 'center',
-                baseline: 'top',
+                baseline: 'bottom',
             });
+
 
             let service = strings[i].slice(3, 4)
 
             if (service === "D") {
-                doc.text("DHL", doc.internal.pageSize.getWidth() / 2, 40, {
+                doc.text("DHL", doc.internal.pageSize.getWidth() / 2 - 30, 35, {
                     align: 'center',
                     baseline: 'center',
                 });
             }
             if (service === "U") {
-                doc.text("UPS", doc.internal.pageSize.getWidth() / 2, 40, {
+                doc.text("UPS", doc.internal.pageSize.getWidth() / 2 - 30, 35, {
                     align: 'center',
                     baseline: 'center',
                 });
             }
 
             if (service === "B") {
-                doc.text("BLK", doc.internal.pageSize.getWidth() / 2, 40, {
+                doc.text("BLK", doc.internal.pageSize.getWidth() / 2 - 30, 35, {
                     align: 'center',
                     baseline: 'center',
                 });
             }
 
             let hour = strings[i].slice(10, 12) + ":" + strings[i].slice(12, 14)
-            doc.text(hour, doc.internal.pageSize.getWidth() / 2, 55, {
+            doc.text(hour, doc.internal.pageSize.getWidth() / 2 + 30, 35, {
                 align: 'center',
                 baseline: 'center',
             });
 
             // Add QR code
             const qrCodeDataURL = await toDataURL(strings[i], { width: qrCodeSize, height: qrCodeSize });
-            doc.addImage(qrCodeDataURL, 'JPEG', doc.internal.pageSize.getWidth() / 2 - qrCodeSize / 2, topMargin + fontSize + qrCodeMargin, qrCodeSize, qrCodeSize);
+            // doc.addImage(qrCodeDataURL, 'JPEG', doc.internal.pageSize.getWidth() / 2 - qrCodeSize / 2, topMargin + fontSize + qrCodeMargin, qrCodeSize, qrCodeSize);
+            doc.addImage(qrCodeDataURL, 'JPEG', doc.internal.pageSize.getWidth() / 2 - qrCodeSize / 2, doc.internal.pageSize.getHeight() / 2 - qrCodeSize / 2, qrCodeSize, qrCodeSize);
+
         }
 
         doc.save('output.pdf');
