@@ -137,6 +137,7 @@ const Table = () => {
         }
 
         doc.save('output.pdf');
+        window.location.reload(false);
     };
 
     return (
@@ -157,9 +158,9 @@ const Table = () => {
                 </tbody>
             </table>
 
-            <section className="custom">
+            {/* <section className="custom">
                 <button className="custom__btn" onClick={() => setIsCustomOpen(true)}>Create custom QR code</button>
-            </section>
+            </section> */}
             <Modal
                 isOpen={modalIsOpen}
                 onAfterOpen={afterOpenModal}
@@ -217,70 +218,70 @@ const Table = () => {
 
             {/*  Custom modal */}
 
-            <Modal
+            {/* <Modal
                 isOpen={isCustomOpen}
                 onAfterOpen={afterOpenModal}
                 style={customStyles}
             >
-                <h2 className="modal__title" ref={(_subtitle) => (subtitle = _subtitle)}>Custom pallet</h2>
-                <article>
-                    <div className="palletinfo">
-                        <p className="modal__text">Service</p>
-                        <div className="palletinfo__service">
-                            <label className="modal__label">
-                                <input
-                                    className="modal__radio"
-                                    type="radio"
-                                    value="DHL"
-                                    checked={service === "DHL"}
-                                    onChange={(e) => setService("DHL")}
-                                />
-                                DHL
-                            </label>
-                            <label className="modal__label">
-                                <input
-                                    className="modal__radio"
-                                    type="radio"
-                                    value="UPS"
-                                    checked={service === "UPS"}
-                                    onChange={(e) => setService("UPS")}
-                                />
-                                UPS
-                            </label>
-                            <label className="modal__label">
-                                <input
-                                    className="modal__radio"
-                                    type="radio"
-                                    value="BLK"
-                                    checked={service === "BLK"}
-                                    onChange={(e) => setService("BLK")}
-                                />
-                                BLK
-                            </label>
-                        </div>
-                        <div className="palletinfo">
-                            <input className="palletinfo__input" type="date" onChange={(e) => { setDate(e.target.value) }} />
-                            <input className="palletinfo__input" type="time" onChange={(e) => { setSelectedHour(e.target.value.replace(":", "")) }} />
-                        </div>
-                    </div>
-                    <div className="pagecount__choice">
-                        <label htmlFor="palletcount__input" className="modal__label">
-                            Enter quantity:
+                <h2 className="modal__title" ref={(_subtitle) => (subtitle = _subtitle)}>Custom pallet</h2> */}
+            <article className="custom-wrapper">
+                <div className="palletinfo">
+                    <p className="modal__text">Service</p>
+                    <div className="palletinfo__service">
+                        <label className="modal__label">
+                            <input
+                                className="modal__radio"
+                                type="radio"
+                                value="DHL"
+                                checked={service === "DHL"}
+                                onChange={(e) => setService("DHL")}
+                            />
+                            DHL
                         </label>
-                        <input
-                            type="text"
-                            value={selectedValue}
-                            onChange={handleInputChange}
-                            onClick={() => setSelectedValue("")}
-                            className="palletcount__input"
-                        />
+                        <label className="modal__label">
+                            <input
+                                className="modal__radio"
+                                type="radio"
+                                value="UPS"
+                                checked={service === "UPS"}
+                                onChange={(e) => setService("UPS")}
+                            />
+                            UPS
+                        </label>
+                        <label className="modal__label">
+                            <input
+                                className="modal__radio"
+                                type="radio"
+                                value="BLK"
+                                checked={service === "BLK"}
+                                onChange={(e) => setService("BLK")}
+                            />
+                            BLK
+                        </label>
                     </div>
-                    <div className="action">
-                        <button className="action__cancel" onClick={(e) => setIsCustomOpen(false)}>Cancel</button>
-                        <button className="action__print" onClick={print}>Print</button>
+                    <div className="palletinfo">
+                        <input className="palletinfo__input" type="date" onChange={(e) => { setDate(e.target.value) }} />
+                        <input className="palletinfo__input" type="time" onChange={(e) => { setSelectedHour(e.target.value.replace(":", "")) }} />
                     </div>
-                </article>
-            </Modal>
+                </div>
+                <div className="pagecount__choice">
+                    <label htmlFor="palletcount__input" className="modal__label">
+                        Enter quantity:
+                    </label>
+                    <input
+                        type="text"
+                        value={selectedValue}
+                        onChange={handleInputChange}
+                        onClick={() => setSelectedValue("")}
+                        className="palletcount__input"
+                    />
+                </div>
+                <div className="action">
+                    <button className="action__cancel" onClick={(e) => setIsCustomOpen(false)}>Cancel</button>
+                    <button className="action__print" onClick={print}>Print</button>
+                </div>
+            </article>
+            {/* </Modal> */}
         </>
     );
 };
