@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 
-import { generateDates, generateHours, generateCells } from "../../utils/tableUtils";
+import { generateDates, generateHours, generateCells } from "../../utils/tableUtilsStores";
 import { generatePalletString } from "../../utils/generatePalletString";
 import TableHeader from "../TableHeader/TableHeader";
 import TableRow from "../TableRow/TableRow";
