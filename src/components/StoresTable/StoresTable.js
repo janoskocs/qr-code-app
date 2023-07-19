@@ -290,31 +290,51 @@ const StoresTable = () => {
                             <input
                                 className="modal__radio"
                                 type="radio"
-                                value="DHL"
-                                checked={service === "DHL"}
-                                onChange={(e) => setService("DHL")}
+                                value="PHO"
+                                checked={service === "PHO"}
+                                onChange={(e) => setService("PHO")}
                             />
-                            DHL
+                            PHO
                         </label>
                         <label className="modal__label">
                             <input
                                 className="modal__radio"
                                 type="radio"
-                                value="UPS"
-                                checked={service === "UPS"}
-                                onChange={(e) => setService("UPS")}
+                                value="CP"
+                                checked={service === "CP"}
+                                onChange={(e) => setService("CP")}
                             />
-                            UPS
+                            CP
                         </label>
                         <label className="modal__label">
                             <input
                                 className="modal__radio"
                                 type="radio"
-                                value="BLK"
-                                checked={service === "BLK"}
-                                onChange={(e) => setService("BLK")}
+                                value="M87"
+                                checked={service === "M87"}
+                                onChange={(e) => setService("M87")}
                             />
-                            BLK
+                            M87
+                        </label>
+                        <label className="modal__label">
+                            <input
+                                className="modal__radio"
+                                type="radio"
+                                value="W36"
+                                checked={service === "W36"}
+                                onChange={(e) => setService("W36")}
+                            />
+                            W36
+                        </label>
+                        <label className="modal__label">
+                            <input
+                                className="modal__radio"
+                                type="radio"
+                                value="HO"
+                                checked={service === "HO"}
+                                onChange={(e) => setService("HO")}
+                            />
+                            SHARD
                         </label>
                     </div>
                     <div className="palletinfo">
