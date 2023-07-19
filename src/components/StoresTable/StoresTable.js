@@ -129,7 +129,7 @@ const StoresTable = () => {
                     baseline: 'center',
                 });
             }
-            if (service === "S") {
+            if (service === "H") {
                 doc.text("SHARD", doc.internal.pageSize.getWidth() / 2 - 30, 35, {
                     align: 'center',
                     baseline: 'center',
@@ -198,27 +198,72 @@ const StoresTable = () => {
                             />
                         </div>
 
-                        {service === "DHLUPS" ? <>
-                            <p className="modal__text">Select DHL or UPS</p>
+                        {service === "W36SH" ? <>
+                            <p className="modal__text">Select W36 or SHARD</p>
                             <label className="modal__label">
                                 <input
                                     className="modal__radio"
                                     type="radio"
-                                    value="DHL"
-                                    checked={service === "DHL"}
-                                    onChange={(e) => setService("DHL")}
+                                    value="W36"
+                                    checked={service === "W36"}
+                                    onChange={(e) => setService("W36")}
                                 />
-                                DHL
+                                W36
                             </label>
                             <label className="modal__label">
                                 <input
                                     className="modal__radio"
                                     type="radio"
-                                    value="UPS"
-                                    checked={service === "UPS"}
-                                    onChange={(e) => setService("UPS")}
+                                    value="HO"
+                                    checked={service === "HO"}
+                                    onChange={(e) => setService("HO")}
                                 />
-                                UPS
+                                SHARD
+                            </label></> : ""}
+
+                        {service === "CPM87" ? <>
+                            <p className="modal__text">Select CP or M87</p>
+                            <label className="modal__label">
+                                <input
+                                    className="modal__radio"
+                                    type="radio"
+                                    value="CP"
+                                    checked={service === "CP"}
+                                    onChange={(e) => setService("CP")}
+                                />
+                                CP
+                            </label>
+                            <label className="modal__label">
+                                <input
+                                    className="modal__radio"
+                                    type="radio"
+                                    value="M87"
+                                    checked={service === "M87"}
+                                    onChange={(e) => setService("M87")}
+                                />
+                                M87
+                            </label></> : ""}
+                        {service === "M87W36" ? <>
+                            <p className="modal__text">Select M87 or W36</p>
+                            <label className="modal__label">
+                                <input
+                                    className="modal__radio"
+                                    type="radio"
+                                    value="M87"
+                                    checked={service === "M87"}
+                                    onChange={(e) => setService("M87")}
+                                />
+                                M87
+                            </label>
+                            <label className="modal__label">
+                                <input
+                                    className="modal__radio"
+                                    type="radio"
+                                    value="W36"
+                                    checked={service === "W36"}
+                                    onChange={(e) => setService("W36")}
+                                />
+                                W36
                             </label></> : ""}
                         <div className="action">
                             <button className="action__cancel" onClick={closeModal}>Cancel</button>
