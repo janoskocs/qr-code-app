@@ -41,7 +41,7 @@ const StoresTable = () => {
         setIsOpen(false);
     }
 
-    const [selectedValue, setSelectedValue] = useState("10");
+    const [selectedValue, setSelectedValue] = useState("9");
     const handleInputChange = (event) => {
         setSelectedValue(event.target.value);
     };
@@ -101,23 +101,36 @@ const StoresTable = () => {
             });
 
 
-            let service = strings[i].slice(3, 4)
+            let service = strings[i].slice(5, 6)
 
-            if (service === "D") {
-                doc.text("DHL", doc.internal.pageSize.getWidth() / 2 - 30, 35, {
+            if (service === "P") {
+                doc.text("PHO", doc.internal.pageSize.getWidth() / 2 - 30, 35, {
                     align: 'center',
                     baseline: 'center',
                 });
             }
-            if (service === "U") {
-                doc.text("UPS", doc.internal.pageSize.getWidth() / 2 - 30, 35, {
+            if (service === "C") {
+                doc.text("CP", doc.internal.pageSize.getWidth() / 2 - 30, 35, {
                     align: 'center',
                     baseline: 'center',
                 });
             }
 
-            if (service === "B") {
-                doc.text("BLK", doc.internal.pageSize.getWidth() / 2 - 30, 35, {
+            if (service === "M") {
+                doc.text("M87", doc.internal.pageSize.getWidth() / 2 - 30, 35, {
+                    align: 'center',
+                    baseline: 'center',
+                });
+            }
+
+            if (service === "W") {
+                doc.text("W36", doc.internal.pageSize.getWidth() / 2 - 30, 35, {
+                    align: 'center',
+                    baseline: 'center',
+                });
+            }
+            if (service === "S") {
+                doc.text("SHARD", doc.internal.pageSize.getWidth() / 2 - 30, 35, {
                     align: 'center',
                     baseline: 'center',
                 });

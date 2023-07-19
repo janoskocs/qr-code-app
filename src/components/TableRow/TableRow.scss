@@ -36,4 +36,37 @@
   &:hover {
     cursor: pointer;
   }
+
+  &.PHO {
+    background-color: yellow;
+    &:hover {
+      background-color: lightyellow;
+    }
+  }
+  &.CP {
+    background-color: tomato;
+    &:hover {
+      background-color: lightcoral;
+    }
+  }
+  &.M87 {
+    background-color: cadetblue;
+    &:hover {
+      background-color: lightseagreen;
+    }
+  }
+  &.W36 {
+    background-color: cornflowerblue;
+    &:hover {
+      background-color: lightseagreen;
+    }
+  }
+  &.W36SH,
+  &.CPM87,
+  &.M87W36 {
+    background-color: olivedrab;
+    &:hover {
+      background-color: lightseagreen;
+    }
+  }
 }
