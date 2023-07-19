@@ -26,4 +26,12 @@
       color: rgb(9, 0, 128);
     }
   }
+  &__link {
+    text-decoration: none;
+    color: #fff;
+    font-family: Arial, Helvetica, sans-serif;
+    &:hover {
+      border-bottom: 1px solid #fff;
+    }
+  }
 }
