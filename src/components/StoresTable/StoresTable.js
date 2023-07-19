@@ -76,7 +76,7 @@ const StoresTable = () => {
     useEffect(() => {
         if (palletStringArr.length > 0) {
             generatePDF(palletStringArr)
-            window.location.reload(false);
+            // window.location.reload(false);
         }
 
     }, [palletStringArr]);
@@ -150,7 +150,11 @@ const StoresTable = () => {
         }
 
         doc.save('output.pdf');
-        window.location.reload(false);
+        setSelectedDate("")
+        setSelectedHour("")
+        setService("")
+        setPalletStringArr([])
+        setSelectedValue("9")
     };
 
     return (
