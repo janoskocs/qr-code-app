@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 
 import { generateDates, generateHours, generateCells } from "../../utils/tableUtilsStores";
-import { generatePalletString } from "../../utils/generatePalletString";
+import { generatePalletString } from "../../utils/generatePalletStringStore";
 import TableHeader from "../TableHeader/TableHeader";
 import TableRow from "../TableRow/TableRow";
 
@@ -123,7 +123,7 @@ const StoresTable = () => {
                 });
             }
 
-            let hour = strings[i].slice(10, 12) + ":" + strings[i].slice(12, 14)
+            let hour = strings[i].slice(-5, -3) + ":" + strings[i].slice(-3, -1)
             doc.text(hour, doc.internal.pageSize.getWidth() / 2 + 30, 35, {
                 align: 'center',
                 baseline: 'center',
