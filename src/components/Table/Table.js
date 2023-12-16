@@ -9,6 +9,7 @@ import Modal from 'react-modal';
 import jsPDF from 'jspdf';
 import { toDataURL } from 'qrcode';
 import "./Table.scss";
+import CustomPallet from "../CustomPallet/CustomPallet";
 
 const Table = () => {
 
@@ -157,7 +158,7 @@ const Table = () => {
                     ))}
                 </tbody>
             </table>
-
+            <CustomPallet />
             {/* <section className="custom">
                 <button className="custom__btn" onClick={() => setIsCustomOpen(true)}>Create custom QR code</button>
             </section> */}
